@@ -1,0 +1,24 @@
+:root {
+    --primary-color: #021557;
+    --secondary-color: #437dd4;
+    --tertiary-color: #96cbee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height:100vh;
+    width: 100vw;
+}
+
+header {
+    background-color: var(--primary-color);
+    background-image: linear-gradient(45deg, #021557 10%, #437dd4 52%, #96cbee 80%);
+}
+
+.saveBtn {
+    background-color: var(--secondary-color);
+}
