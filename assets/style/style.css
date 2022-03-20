@@ -23,6 +23,10 @@ header {
     background-color: var(--secondary-color);
 }
 
+.historyBtn {
+    background-color: var(--tertiary-color);
+}
+
 .fav {
     color: #30a73f;
 }
@@ -37,4 +41,9 @@ header {
 }
 .extreme {
     color: #6a0de2;
+}
+
+.day {
+    height: 19%;
+    width: 30%;
 }

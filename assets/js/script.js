@@ -71,12 +71,18 @@ var createDisplay = function(data) {
 
 var createForecast = function (data) {
     console.log(data);
-    //create dates from array
-    $("#date1").text(data[0].dt);
-    $("#date2").text(data[1].dt);
-    $("#date3").text(data[2].dt);
-    $("#date4").text(data[3].dt);
-    $("#date5").text(data[4].dt);
+    //create vars to hold moment
+    var date1 = moment(data[0].dt*1000).format('MMM DD');
+    var date2 = moment(data[1].dt*1000).format('MMM DD');
+    var date3 = moment(data[2].dt*1000).format('MMM DD');
+    var date4 = moment(data[3].dt*1000).format('MMM DD');
+    var date5 = moment(data[4].dt*1000).format('MMM DD');
+    //create date from vars
+    $("#date1").text(date1);
+    $("#date2").text(date2);
+    $("#date3").text(date3);
+    $("#date4").text(date4);
+    $("#date5").text(date5);
     //create temp from array
     $("#temp1").text(data[0].temp.day + '\xB0' + ' F');
     $("#temp2").text(data[1].temp.day + '\xB0' + ' F');
@@ -103,19 +109,23 @@ var searchCity = function () {
     var cityName = $("#city").val();
     //call getForecast to get lat/lon
     getForecast(cityName);
-    //use localstorage to save search history
-    localStorage.setItem("city", cityName);
+    //call save searches function
+    saveSearches();
 };
 
 var saveSearches = function () {
+    var cityName = $("#city").val();
     var searchHistoryEl = document.createElement("button");
-    searchHistoryEl.classList = "btn";
+    searchHistoryEl.classList = "btn text-center historyBtn";
     searchHistoryEl.setAttribute('data-id', searchCounter);
-    searchHistoryEl.textContent = cityInput;
-
+    searchHistoryEl.textContent = $("#city").val().trim();
+    //append to empty div
+    $("#searchHistory").append(searchHistoryEl);
+    searchCounter++;
     //use localstorage to save search history
-    localStorage.setItem("city", cityName);
+    localStorage.setItem(searchCounter, cityName);
 };
+
 
 //create event listener for search button to run searchCity function
 $(".saveBtn").on('click', searchCity);
