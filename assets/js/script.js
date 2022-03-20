@@ -8,7 +8,7 @@ var getForecast = function (cityName) {
     //create var to hold cityName val
     //var cityName = $("#city").val();
     //create var to hold apiURL
-    var apiURL = "http://api.openweathermap.org/geo/1.0/direct?q=" +cityName+
+    var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q=" +cityName+
     "&appid=" +apiKey;
 
     //use fetch to grab json data from apiURL and return it in function(response)
@@ -129,5 +129,3 @@ var saveSearches = function () {
 
 //create event listener for search button to run searchCity function
 $(".saveBtn").on('click', searchCity);
-
-//function (current);
