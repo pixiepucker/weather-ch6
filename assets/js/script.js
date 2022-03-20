@@ -54,6 +54,19 @@ var createDisplay = function(data) {
     $("#windCity").text(data.wind_speed + ' MPH');
     $("#humidityCity").text(data.humidity + '%' );
     $("#uvIndexCity").text(data.uvi);
+    
+    //create if else statement to change color of text based on uv index
+    if (data.uvi <= 2) {
+        $("#uvIndexCity").addClass('fav');
+    } else if (data.uvi >= 3 || data.uvi <= 5) {
+        $("#uvIndexCity").addClass('mod');
+    } else if (data.uvi >= 6 || data.uvi <= 7) {
+        $("#uvIndexCity").addClass('high');
+    } else if (data.uvi >= 8 || data.uvi <= 10) {
+        $("#uvIndexCity").addClass('vhigh');
+    } else if (data.uvi >= 11) {
+        $("#uvIndexCity").addClass('extreme');
+    }
 };
 
 //create function that calls getForecast function
