@@ -38,6 +38,7 @@ var displayWeather = function (data) {
         if (response.ok) {
             response.json().then(function(data) {
                 createDisplay(data.current);
+                createForecast(data.daily);
             });
         } else {
             alert("Error: Please enter a valid city!");
@@ -49,12 +50,11 @@ var displayWeather = function (data) {
 };
 
 var createDisplay = function(data) {
-    console.log(data);
     $("#tempCity").text(data.temp + '\xB0' + 'F');
     $("#windCity").text(data.wind_speed + ' MPH');
     $("#humidityCity").text(data.humidity + '%' );
     $("#uvIndexCity").text(data.uvi);
-    
+
     //create if else statement to change color of text based on uv index
     if (data.uvi <= 2) {
         $("#uvIndexCity").addClass('fav');
@@ -67,6 +67,34 @@ var createDisplay = function(data) {
     } else if (data.uvi >= 11) {
         $("#uvIndexCity").addClass('extreme');
     }
+};
+
+var createForecast = function (data) {
+    console.log(data);
+    //create dates from array
+    $("#date1").text(data[0].dt);
+    $("#date2").text(data[1].dt);
+    $("#date3").text(data[2].dt);
+    $("#date4").text(data[3].dt);
+    $("#date5").text(data[4].dt);
+    //create temp from array
+    $("#temp1").text(data[0].temp.day + '\xB0' + ' F');
+    $("#temp2").text(data[1].temp.day + '\xB0' + ' F');
+    $("#temp3").text(data[2].temp.day + '\xB0' + ' F');
+    $("#temp4").text(data[3].temp.day + '\xB0' + ' F');
+    $("#temp5").text(data[4].temp.day + '\xB0' + ' F');
+    //create wind from array
+    $("#wind1").text(data[0].wind_speed + ' MPH');
+    $("#wind2").text(data[1].wind_speed + ' MPH');
+    $("#wind3").text(data[2].wind_speed + ' MPH');
+    $("#wind4").text(data[3].wind_speed + ' MPH');
+    $("#wind5").text(data[4].wind_speed + ' MPH');
+    //create humidity from array
+    $("#hum1").text(data[0].humidity + ' %');
+    $("#hum2").text(data[1].humidity + ' %');
+    $("#hum3").text(data[2].humidity + ' %');
+    $("#hum4").text(data[3].humidity + ' %');
+    $("#hum5").text(data[4].humidity + ' %');
 };
 
 //create function that calls getForecast function
