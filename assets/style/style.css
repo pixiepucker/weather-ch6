@@ -22,3 +22,19 @@ header {
 .saveBtn {
     background-color: var(--secondary-color);
 }
+
+.fav {
+    color: #30a73f;
+}
+.mod {
+    color: #e6e946;
+}
+.high {
+    color: #f59e2e;
+}
+.vhigh {
+    color: #851010
+}
+.extreme {
+    color: #6a0de2;
+}
